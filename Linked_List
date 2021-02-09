@@ -1,0 +1,151 @@
+#include <iostream>
+using namespace std;
+
+struct Node
+{
+    int data;
+    Node* next;
+};
+
+Node* head=NULL;
+
+void insert_beg()
+{
+    Node *newnode = new Node();
+    int data;
+    head=newnode;
+    cout<<"Insert data ";
+    cin>>data;
+    newnode->data=data;
+    newnode->next=NULL;
+}
+
+void print()
+{
+    Node *point=head;
+    cout<<"your linked list is ";
+    while(point!=NULL)
+    {
+        cout<<point->data<<" ";
+        point=point->next;
+    }
+}
+
+void insert_end()
+{
+    Node *point=head;
+    while(point->next!=NULL)
+    {
+        point=point->next;
+    }
+    Node *newnode = new Node();
+    point->next=newnode;
+    int data;
+    cout<<"Insert data ";
+    cin>>data;
+    newnode->data=data;
+    newnode->next=NULL;
+}
+
+void insert_mid()
+{
+    Node *point=head;
+    Node *newnode = new Node();
+    int data;
+    int pos;
+    cout<<"pos ";
+    cin>>pos;
+    cout<<endl<<"Insert data "<<" Starting from 1 ";
+    cin>>data;
+    newnode->data=data;
+    int counter=1;
+    Node *before, *after;
+    while(counter!= pos-1)
+    {
+        point=point->next;
+        counter++;
+    }
+    before=point;
+    after=point->next;
+    newnode->next=before->next;
+    before->next=newnode;
+}
+
+
+
+void count()
+{
+    int counter=1;
+    Node *point=head;
+    while(point->next!=NULL)
+    {
+        point=point->next;
+        counter++;
+    }
+    cout<<endl<<counter<<" nodes in lined lisr Starting from 1";
+}
+
+void del_mid()
+{
+    int pos;
+    cout<<endl<<"node position to del? (from 1) ";
+    cin>>pos;
+    int counter=1;
+    Node* point=head;
+    Node *before, *after;
+    while(counter!= pos-1)
+    {
+        point=point->next;
+        counter++;
+    }
+    before=point;
+    after=point->next;
+    before->next=after->next;
+    cout<<endl<<"deleted node with data: "<<after->data<<endl;
+    delete(after);
+    
+}
+
+void del_beg()
+{
+    Node* temp = head; 
+    cout<<endl<<"deleted node with data: "<<head->data<<endl;
+    head=head->next;
+    delete(temp);
+}
+
+
+void del_end()
+{
+    Node *pointer=head;
+    Node *last;
+    while(pointer->next!=NULL)
+    {
+        last=pointer;
+        pointer=pointer->next;
+    }
+    last->next=NULL;
+    cout<<endl<<"deleted node with data: "<<pointer->data<<endl;
+    delete(pointer);
+    
+}
+
+int main()
+{
+    printf("Hello, World!\n");
+    insert_beg();
+    insert_end();
+    insert_end();
+    insert_end();
+    insert_mid();
+    print();
+    count();
+    del_mid();
+    print();
+    del_beg();
+    print();
+    del_end();
+    print();
+    return 0;
+}
+
