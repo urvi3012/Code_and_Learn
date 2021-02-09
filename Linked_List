@@ -136,8 +136,8 @@ bool isEmpty()
     cout<<"Empty list";
 }
 
-
-void reverse()
+//reverse_iteratively
+void reverse_iterative()
 {
     Node *current, *after, *before;
     current=head;
@@ -169,7 +169,7 @@ int main()
     print();
     del_end();
     print();
-    reverse();
+    reverse_iterative();
     print();
     return 0;
 }
