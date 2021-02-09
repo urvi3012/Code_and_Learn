@@ -136,8 +136,7 @@ bool isEmpty()
     cout<<"Empty list";
 }
 
-//reverse_iteratively
-void reverse_iterative()
+void reverse()
 {
     Node *current, *after, *before;
     current=head;
@@ -150,6 +149,33 @@ void reverse_iterative()
         current=after;
     }
     head=before;
+}
+
+void print_recursion(Node *head)
+{
+    if(head==NULL) return;
+    cout<<head->data<<" ";
+    print_recursion(head->next);
+}
+
+void print_reverse_recursion(Node *head)
+{
+    if(head==NULL) return;
+    print_recursion(head->next);
+    cout<<head->data<<" ";
+}
+
+void reverse_using_recursion(Node *p)
+{
+    if(p->next==NULL) 
+    {
+        head=p;
+        return;
+    }
+    reverse_using_recursion(p->next);
+    Node *q=p->next;
+    q->next=p;
+    p->next=NULL;
 }
 
 
@@ -170,6 +196,12 @@ int main()
     del_end();
     print();
     reverse_iterative();
+    print();
+    cout<<"Using recursion print ";
+    print_recursion(head);
+    cout<<"Using recursion, reverse print ";
+    print_reverse_recursion(head);
+    reverse_using_recursion(head);
     print();
     return 0;
 }
