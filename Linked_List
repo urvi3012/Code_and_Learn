@@ -136,6 +136,23 @@ bool isEmpty()
     cout<<"Empty list";
 }
 
+
+void reverse()
+{
+    Node *current, *after, *before;
+    current=head;
+    before=NULL;
+    while(current!=NULL)
+    {
+        after=current->next;
+        current->next=before;
+        before=current;
+        current=after;
+    }
+    head=before;
+}
+
+
 int main()
 {
     printf("Hello, World!\n");
@@ -151,6 +168,8 @@ int main()
     del_beg();
     print();
     del_end();
+    print();
+    reverse();
     print();
     return 0;
 }
