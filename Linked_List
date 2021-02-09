@@ -130,6 +130,12 @@ void del_end()
     
 }
 
+bool isEmpty()
+{
+    if(head==NULL)
+    cout<<"Empty list";
+}
+
 int main()
 {
     printf("Hello, World!\n");
