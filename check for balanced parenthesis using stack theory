@@ -1,0 +1,31 @@
+Scan from left to right
+if opening symbol, add it to the list (push to stack)
+if closing symbol, removing last opening symbol of list  (pop from stack)
+should end with an empt list
+
+
+
+chech_balanced()
+{
+	n=len(expression)
+	create a stack S
+	for i=0 to i=n-1
+	{
+		if(exp[i] is ( or { or [ )
+			push(exp[i]) to stack
+		else
+			if (exp[i] is { or [ or { )
+			{
+				if( s is empty  or top do not pair with exp[i] )
+					return false
+				else
+					pop()					
+			}
+	} 
+if (s is empty)
+	“balanced”
+else
+	“not balanced”
+	
+}
+
