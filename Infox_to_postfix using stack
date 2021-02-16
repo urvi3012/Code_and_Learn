@@ -1,0 +1,60 @@
+Algorithm 
+1. Scan the infix expression from left to right. 
+2. If the scanned character is an operand, output it. 
+3. Else, 
+      1 If the precedence of the scanned operator is greater than the precedence of the operator in the stack(or the stack is empty           or the stack contains a ‘(‘ ), push it. 
+      2 Else, Pop all the operators from the stack which are greater than or equal to in precedence than that of the scanned operator. After doing that Push the scanned operator to the stack. (If you encounter parenthesis while popping then stop there and push the scanned operator in the stack.) 
+4. If the scanned character is an ‘(‘, push it to the stack. 
+5. If the scanned character is an ‘)’, pop the stack and and output it until a ‘(‘ is encountered, and discard both the parenthesis. 
+6. Repeat steps 2-6 until infix expression is scanned. 
+7. Print the output 
+8. Pop and output from the stack until it is not empty
+
+
+Pseudo Code:
+
+ORDER OF PRECEDENCE
+
+Paranthesis
+Exponents
+Mul and Div
+Add and Sub
+
+
+Infix_to_postfix(exp)
+{
+	Create stack of characters (s)
+	result_string= empty
+	for i=0 to len_of_exp:
+		{
+			if(exp[i] is operand:
+				apend in result_string
+			else if exp[i] is operator:
+			{
+				while(stack is not empty  and s[top] is of higher prec 				than exp[i] and s[top] is not the openng 						parentheses):
+					{	
+						res=res+s[top]
+						s.pop()
+					}
+			}
+			else if exp[i] is opening parenthesis:
+			{
+				s.push(exp[i])
+			}
+			else if(exp[i] is closong parenthese:
+			{
+				while(s is not empty and s[top] isnot a opening 					parenthesis:
+					{
+						res=res+s[top]
+						pop(s[top])
+					}
+			s.pop()			
+			}
+		}
+	while(stackis not empty):
+			{	
+				res=res+s[top]
+				s[pop]
+			}
+return res
+}
